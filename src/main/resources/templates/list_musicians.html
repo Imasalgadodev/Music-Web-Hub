@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Musicians</title>
+</head>
+<body>
+
+<h1>List of Musicians</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Main Instrument</th>
+        <th>Band Name</th>
+        <th>Status</th>
+    </tr>
+
+    <tr th:each="musician : ${musicians}">
+        <td th:text="${musician.id}"></td>
+        <td th:text="${musician.firstName}"></td>
+        <td th:text="${musician.lastName}"></td>
+        <td th:text="${musician.age}"></td>
+        <td th:text="${musician.gender}"></td>
+        <td th:text="${musician.country}"></td>
+        <td th:text="${musician.city}"></td>
+        <td th:text="${musician.phoneNumber}"></td>
+        <td th:text="${musician.email}"></td>
+        <td th:text="${musician.mainInstrument}"></td>
+        <td th:text="${musician.bandName}"></td>
+        <td th:text="${musician.status}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
