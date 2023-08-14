@@ -1,11 +1,12 @@
-package Ima.Salgado.MusicWebHub.Model;
+package Ima.Salgado.MusicWebHub.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
+@Table(name = "musicians")
 public class Musician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,8 @@ public class Musician {
     private String status; // "Looking for band", "Looking for shows", "Not available"
     private String equipment;
 
+    @ManyToMany(mappedBy = "bandMembersList")
+    private List<Band> bands;
     // Getter and Setter methods
 
     public Long getId() {

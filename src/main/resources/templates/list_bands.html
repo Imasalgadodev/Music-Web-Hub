@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Bands</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <h1>Music Web App</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/musicians">Musicians</a></li>
+            <li><a href="/bands">Bands</a></li>
+            <li><a href="/venues">Venues</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="container">
+        <h2>List of Bands</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Band Members</th>
+                <th>Roles</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Musical Style</th>
+                <th>Influenced By</th>
+                <th>Status</th>
+                <th>Show Calendar</th>
+                <th>Rehearsal Schedule</th>
+            </tr>
+
+            <tr th:each="band : ${bands}">
+                <td th:text="${band.id}"></td>
+                <td th:text="${band.name}"></td>
+                <td th:text="${band.startDate}"></td>
+                <td th:text="${band.country}"></td>
+                <td th:text="${band.city}"></td>
+                <td th:text="${band.bandMembers}"></td>
+                <td th:text="${band.roles}"></td>
+                <td th:text="${band.phoneNumber}"></td>
+                <td th:text="${band.email}"></td>
+                <td th:text="${band.musicalStyle}"></td>
+                <td th:text="${band.influencedBy}"></td>
+                <td th:text="${band.status}"></td>
+                <td th:text="${band.showCalendar}"></td>
+                <td th:text="${band.rehearsalSchedule}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

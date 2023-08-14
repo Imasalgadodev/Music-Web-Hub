@@ -1,0 +1,65 @@
+/* ... Estilos anteriores ... */
+
+.header {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.menu ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    color: #f5f5f5;
+}
+
+.hero {
+    background-image: url(https://w.forfun.com/fetch/7d/7d79917a27cfd4d071634e26489ec754.jpeg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+.hero-2 {
+    background-image: url(https://previews.123rf.com/images/mstupakova/mstupakova1702/mstupakova170200098/72575039-fondo-de-m%C3%BAsica-multicolor-para-tela-papel-y-dise%C3%B1o-web.jpg);
+     background-size: cover;
+        background-position: center;
+        color: #fff;
+        text-align: center;
+        padding: 100px 0;
+    }
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ... Otros estilos ... */

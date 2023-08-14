@@ -1,43 +1,111 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Musicians</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>List of Musicians</h1>
+<div class="header">
+    <div class="logo">
+        <h1>Music Web App</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/musicians">Musicians</a></li>
+            <li><a href="/bands">Bands</a></li>
+            <li><a href="/venues">Venues</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+        </ul>
+    </div>
+</div>
+<div class="hero">
+<div class="container">
+    <h2>List of Musicians</h2>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-        <th>Country</th>
-        <th>City</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>Main Instrument</th>
-        <th>Band Name</th>
-        <th>Status</th>
-    </tr>
+    <input type="text" id="search" placeholder="Search musician...">
 
-    <tr th:each="musician : ${musicians}">
-        <td th:text="${musician.id}"></td>
-        <td th:text="${musician.firstName}"></td>
-        <td th:text="${musician.lastName}"></td>
-        <td th:text="${musician.age}"></td>
-        <td th:text="${musician.gender}"></td>
-        <td th:text="${musician.country}"></td>
-        <td th:text="${musician.city}"></td>
-        <td th:text="${musician.phoneNumber}"></td>
-        <td th:text="${musician.email}"></td>
-        <td th:text="${musician.mainInstrument}"></td>
-        <td th:text="${musician.bandName}"></td>
-        <td th:text="${musician.status}"></td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Main Instrument</th>
+            <th>Band Name</th>
+            <th>Status</th>
+            <th>Profile</th>
+        </tr>
+
+        <tr th:each="musician : ${musicians}">
+            <td><a th:href="@{/musician/{id}(id=${musician.id})}" th:text="${musician.id}"></a></td>
+            <td><a th:href="@{/musician/{id}(id=${musician.id})}" th:text="${musician.firstName}"></a></td>
+            <td><a th:href="@{/musician/{id}(id=${musician.id})}" th:text="${musician.lastName}"></a></td>
+            <td th:text="${musician.age}"></td>
+            <td th:text="${musician.gender}"></td>
+            <td th:text="${musician.country}"></td>
+            <td th:text="${musician.city}"></td>
+            <td th:text="${musician.phoneNumber}"></td>
+            <td th:text="${musician.email}"></td>
+            <td th:text="${musician.mainInstrument}"></td>
+            <td th:text="${musician.bandName}"></td>
+            <td th:text="${musician.status}"></td>
+            <td><button class="profile-btn" th:attr="data-id=${musician.id}">View Profile</button></td>
+        </tr>
+    </table>
+</div>
+
+<div class="popup" id="myModal">
+    <div class="popup-content">
+        <button class="close">Close</button>
+        <div id="profile-details"></div>
+    </div>
+</div>
+</div>
+<script>
+const popup = document.getElementById('myModal');
+const profileDetails = popup.querySelector('#profile-details');
+const closePopupBtn = popup.querySelector('.close');
+
+function openProfile(id) {
+    fetch(`/musician/${id}`)
+        .then(response => response.text())
+        .then(data => {
+            profileDetails.innerHTML = data;
+            popup.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error loading musician profile:', error);
+        });
+}
+
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+const profileBtns = document.querySelectorAll('.profile-btn');
+profileBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const musicianId = btn.getAttribute('data-id');
+        openProfile(musicianId);
+    });
+});
+
+window.addEventListener('click', event => {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+</script>
 
 </body>
 </html>
