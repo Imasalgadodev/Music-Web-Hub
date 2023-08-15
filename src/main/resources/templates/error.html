@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
+    <title>HTTP Error Codes</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-error.css">
+    <head>
+        <!-- Encabezado y metadatos -->
+    </head>
 <body>
-
-<div class="container">
-    <h1>Error</h1>
-
-    <p>Error al cargar</p>
-    <p th:if="${error}" th:text="${error}"></p>
-</div>
-
+<h1>Error</h1>
+<!--
+<p th:switch="${errorCode}">
+<p th:case="400">Bad Request: The request could not be understood or was missing required parameters.</p>
+<p th:case="404">Not Found: The requested resource was not found.</p>
+<p th:case="500">Internal Server Error: An internal server error occurred while processing the request.</p>
+ Agrega más casos según sea necesario
+<p th:case="*">An error occurred.</p>-->
+</p>
 </body>
 </html>

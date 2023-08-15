@@ -8,6 +8,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home() {
-        return "index"; // Esto redirigirá a "index.html" en la carpeta de recursos estáticos
+        return "index"; // Esto redirigirá a "index.html"
     }
 }

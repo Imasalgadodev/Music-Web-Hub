@@ -4,6 +4,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 .container {
@@ -65,11 +66,11 @@ input#search {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -85,13 +86,17 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #000; /* Cambia el color de fondo para filas pares */
-    color: #fff; /* Cambia el color del texto para filas pares */
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) td {
+    color: #333;
 }
 
 tr:hover {
     background-color: #e0e0e0;
 }
+
 .hero {
     background-image: url(https://w.forfun.com/fetch/7d/7d79917a27cfd4d071634e26489ec754.jpeg);
     background-size: cover;
@@ -100,11 +105,18 @@ tr:hover {
     text-align: center;
     padding: 100px 0;
 }
+
 .hero-2 {
     background-image: url(https://previews.123rf.com/images/mstupakova/mstupakova1702/mstupakova170200098/72575039-fondo-de-m%C3%BAsica-multicolor-para-tela-papel-y-dise%C3%B1o-web.jpg);
-     background-size: cover;
-        background-position: center;
-        color: #fff;
-        text-align: center;
-        padding: 100px 0;
-    }
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}

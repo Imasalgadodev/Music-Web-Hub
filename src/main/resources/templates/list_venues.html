@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Venues</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <h1>Music Web App</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/musicians">Musicians</a></li>
+            <li><a href="/bands">Bands</a></li>
+            <li><a href="/venues">Venues</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+        </ul>
+    </div>
+</div>
+<body>
+<!-- Encabezado y menú -->
+<div class="hero">
+<div class="container">
+    <h2>List of Venues</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Show Calendar</th>
+            <th>Capacity</th>
+            <th>Status</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="venue : ${venues}">
+            <td th:text="${venue.id}"></td>
+            <td th:text="${venue.name}"></td>
+            <td th:text="${venue.city}"></td>
+            <td th:text="${venue.country}"></td>
+            <td th:text="${venue.showCalendar}"></td>
+            <td th:text="${venue.capacity}"></td>
+            <td th:text="${venue.status}"></td>
+            <td th:text="${venue.description}"></td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<!-- Pie de página y enlaces a scripts -->
+</body>
+</html>
+

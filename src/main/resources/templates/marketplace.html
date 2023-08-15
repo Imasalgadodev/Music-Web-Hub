@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Encabezado y enlaces a CSS y fuentes -->
+    <link rel="stylesheet" type="text/css" href="/styles/styles-marketplace.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="hero">
+<div class="menu">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/musicians">Musicians</a></li>
+        <li><a href="/bands">Bands</a></li>
+        <li><a href="/venues">Venues</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/marketplace">Marketplace</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Marketplace</h2>
+    <div class="product-list">
+        <div th:each="product : ${products}" class="product">
+            <img th:src="${product.photoUrl}" alt="Product Photo">
+            <h3 th:text="${product.name}"></h3>
+            <p th:text="${product.description}"></p>
+            <p><strong>Price:</strong> $<span th:text="${product.price}"></span></p>
+            <a th:href="@{/marketplace/buy/{id}(id=${product.id})}" class="buy-button">Buy Now</a>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Pie de página y enlaces a scripts -->
+</body>
+</html>

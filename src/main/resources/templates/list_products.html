@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of products</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <h1>Music Web App</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/musicians">Musicians</a></li>
+            <li><a href="/bands">Bands</a></li>
+            <li><a href="/venues">Venues</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+        </ul>
+    </div>
+</div>
+<body>
+<!-- Encabezado y menú -->
+<div class="hero">
+<div class="container">
+    <h2>Marketplace</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Published Date</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Comments</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td><img th:src="${product.photoUrl}" alt="Product Photo" width="100" height="100"></td>
+            <td th:text="${product.city}"></td>
+            <td th:text="${product.country}"></td>
+            <td th:text="${product.publishedDate}"></td>
+            <td th:text="${product.type}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.status}"></td>
+            <td th:text="${product.comments}"></td>
+        </tr>
+    </table>
+</div>
+</div>
+<!-- Pie de página y enlaces a scripts -->
+</body>
+</html>

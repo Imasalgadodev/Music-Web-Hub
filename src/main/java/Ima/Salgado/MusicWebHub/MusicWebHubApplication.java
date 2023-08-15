@@ -2,8 +2,12 @@ package Ima.Salgado.MusicWebHub;
 
 import Ima.Salgado.MusicWebHub.model.Band;
 import Ima.Salgado.MusicWebHub.model.Musician;
+import Ima.Salgado.MusicWebHub.model.Product;
+import Ima.Salgado.MusicWebHub.model.Venue;
 import Ima.Salgado.MusicWebHub.repository.BandRepository;
 import Ima.Salgado.MusicWebHub.repository.MusicianRepository;
+import Ima.Salgado.MusicWebHub.repository.ProductRepository;
+import Ima.Salgado.MusicWebHub.repository.VenueRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +25,9 @@ public class MusicWebHubApplication {
 	}
 
 	@Bean
-	public CommandLineRunner init(MusicianRepository musicianRepository, BandRepository bandRepository) {
+	public CommandLineRunner init(MusicianRepository musicianRepository, BandRepository bandRepository, ProductRepository productRepository, VenueRepository venueRepository) {
 		return args -> {
+			//Datos precargados de prueba
 			Musician musician1 = new Musician();
 			musician1.setFirstName("John");
 			musician1.setLastName("Doe");
@@ -116,7 +121,36 @@ public class MusicWebHubApplication {
 			band2.setRehearsalSchedule("Tuesday 6pm, Friday 8pm");
 			bandRepository.save(band2);
 
-			// Agregar más bandas aquí si lo deseas
+			// Creación de productos
+			Product product1 = new Product();
+			product1.setName("Guitar");
+			product1.setPhotoUrl("https://images.unsplash.com/photo-1607560105214-0aaa5f8fcba4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWxlY3RyaWMlMjBndWl0YXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+			product1.setDescription("A classic electric guitar");
+			product1.setPrice(599.99);
+			productRepository.save(product1);
+
+			Product product2 = new Product();
+			product2.setName("Piano");
+			product2.setPhotoUrl("https://upload.wikimedia.org/wikipedia/commons/0/01/Steinway_Vienna_002.JPG");
+			product2.setDescription("Grand piano with exceptional sound quality");
+			product2.setPrice(1999.99);
+			productRepository.save(product2);
+
+			// Agregar más productos aquí si lo deseas
+
+			// Creación de venues
+			Venue venue1 = new Venue();
+			venue1.setName("Rock Arena");
+			venue1.setLocation("New York");
+			venue1.setDescription("Large indoor arena for rock concerts");
+			venueRepository.save(venue1);
+
+			Venue venue2 = new Venue();
+			venue2.setName("Jazz Lounge");
+			venue2.setLocation("Toronto");
+			venue2.setDescription("Intimate jazz lounge with great acoustics");
+			venueRepository.save(venue2);
+
 		};
 	}
 
