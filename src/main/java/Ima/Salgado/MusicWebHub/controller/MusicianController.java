@@ -1,11 +1,8 @@
 package Ima.Salgado.MusicWebHub.controller;
 
 import Ima.Salgado.MusicWebHub.model.Musician;
-import Ima.Salgado.MusicWebHub.repository.MusicianRepository;
-import Ima.Salgado.MusicWebHub.service.BandService;
 import Ima.Salgado.MusicWebHub.service.MusicianService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Controller
-public class MusicianController {
+public class MusicianController extends ValidationController {
 
     private MusicianService musicianService;
 
@@ -35,14 +32,26 @@ public class MusicianController {
 
     @PostMapping("/musician/create")
     public String createMusician(@ModelAttribute Musician musician, Model model) {
-        boolean isMusicianCreated = musicianService.createMusician(musician);
-        if(isMusicianCreated) {
-            return "redirect:/musicians";
-        } else {
-            model.addAttribute("errorMessage", "Banda no encontrada.");
-            return "create_musician"; // Redirigir nuevamente a la página de creación
+        // Validar el formato del correo electrónico
+        if (!isValidEmail(musician.getEmail())) {
+            model.addAttribute("errorMessage", "Email inválido");
+            return "create_musician"; // Redirigir a la página de creación con mensaje de error
         }
 
+        // Validar el formato del número de teléfono
+        if (!isValidPhoneNumber(musician.getPhoneNumber())) {
+            model.addAttribute("errorMessage", "Número de teléfono inválido");
+            return "create_musician"; // Redirigir a la página de creación con mensaje de error
+        }
+
+        // Intentar crear al músico
+        boolean isMusicianCreated = musicianService.createMusician(musician);
+        if (isMusicianCreated) {
+            return "redirect:/musicians"; // Redirigir a la lista de músicos si se crea exitosamente
+        } else {
+            model.addAttribute("errorMessage", "Banda no encontrada.");
+            return "create_musician"; // Redirigir a la página de creación con mensaje de error
+        }
     }
 
     @GetMapping("/musicians")
@@ -68,6 +77,4 @@ public class MusicianController {
             return "error";
         }
     }
-
-
 }
