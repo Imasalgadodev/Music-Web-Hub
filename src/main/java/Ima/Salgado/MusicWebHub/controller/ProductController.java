@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ProductController {
 
     private final ProductRepository productRepository;
+    private final Validations validation;
 
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductRepository productRepository, Validations validation) {
         this.productRepository = productRepository;
+        this.validation = validation;
     }
 
     @GetMapping("/products")

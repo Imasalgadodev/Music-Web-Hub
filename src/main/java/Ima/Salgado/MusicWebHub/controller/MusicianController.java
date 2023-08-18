@@ -14,13 +14,15 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Controller
-public class MusicianController extends ValidationController {
+public class MusicianController {
 
-    private MusicianService musicianService;
+    private final MusicianService musicianService;
+    private final Validations validations;
 
     @Autowired
-    public MusicianController(MusicianService musicianService) {
+    public MusicianController(MusicianService musicianService, Validations validations) {
         this.musicianService = musicianService;
+        this.validations = validations;
     }
 
 
@@ -33,13 +35,13 @@ public class MusicianController extends ValidationController {
     @PostMapping("/musician/create")
     public String createMusician(@ModelAttribute Musician musician, Model model) {
         // Validar el formato del correo electrónico
-        if (!isValidEmail(musician.getEmail())) {
+        if (!validations.isValidEmail(musician.getEmail())) {
             model.addAttribute("errorMessage", "Email inválido");
             return "create_musician"; // Redirigir a la página de creación con mensaje de error
         }
 
         // Validar el formato del número de teléfono
-        if (!isValidPhoneNumber(musician.getPhoneNumber())) {
+        if (!validations.isValidPhoneNumber(musician.getPhoneNumber())) {
             model.addAttribute("errorMessage", "Número de teléfono inválido");
             return "create_musician"; // Redirigir a la página de creación con mensaje de error
         }
@@ -64,7 +66,6 @@ public class MusicianController extends ValidationController {
 
     @GetMapping("/musician/{id}")
     public String musicianProfile(@PathVariable Long id, Model model) {
-        System.out.println("Musician ID: " + id); // línea para depurar
         try {
             Musician musician = musicianService.getMusician(id);
             model.addAttribute("musician", musician);

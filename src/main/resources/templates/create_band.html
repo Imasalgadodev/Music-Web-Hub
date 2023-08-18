@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Band</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <h1>Music Web App</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/musicians">Musicians</a></li>
+            <li><a href="/bands">Bands</a></li>
+            <li><a href="/venues">Venues</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+        </ul>
+    </div>
+</div>
+<div class="hero">
+    <div class="container">
+        <h2>Create Band</h2>
+
+        <form th:action="@{/bands/create}" method="post" class="create-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate">
+            <br>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+            <br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+            <br>
+
+            <label for="bandMembers">Band Members:</label>
+            <input type="text" id="bandMembers" name="bandMembers">
+            <br>
+
+            <label for="roles">Roles:</label>
+            <input type="text" id="roles" name="roles">
+            <br>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+
+            <label for="musicalStyle">Musical Style:</label>
+            <input type="text" id="musicalStyle" name="musicalStyle">
+            <br>
+
+            <label for="influencedBy">Influenced By:</label>
+            <input type="text" id="influencedBy" name="influencedBy">
+            <br>
+
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status" required>
+            <br>
+
+            <button type="submit">Create</button>
+        </form>
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts y cierre de etiquetas HTML -->
+</body>
+</html>

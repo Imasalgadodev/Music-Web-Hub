@@ -21,27 +21,68 @@
             <li><a href="/venues">Venues</a></li>
             <li><a href="/products">Products</a></li>
             <li><a href="/marketplace">Marketplace</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li> <!-- Enlace para abrir el pop-up -->
         </ul>
     </div>
 </div>
-
 <div class="hero">
     <div class="container">
         <h2>Welcome to Music Web App</h2>
         <p>Connect with musicians, bands, and venues. Buy and sell musical equipment.</p>
-        <a href="#about" class="button">Learn More</a>
     </div>
 </div>
 
-<div id="about" class="hero-2">
+<div class="hero-2">
     <div class="content">
         <div class="container">
             <h3>About Music Web App</h3>
             <p>Music Web App is your ultimate platform for connecting with fellow musicians, discovering new bands, and finding the perfect venues for your next gig. Whether you're a solo artist looking to join a band, a band in search of a drummer, or a venue owner seeking talented performers, our app has you covered.</p>
-            <!-- ... Otro contenido ... -->
+
+            <p>Explore a vibrant community of musicians from diverse genres and backgrounds. Showcase your skills, share your musical influences, and connect with potential bandmates to create unforgettable performances. Browse through local venues and showcase your talent to a live audience.</p>
+
+            <p>Looking to buy or sell musical equipment? Our Marketplace section allows registered users to trade instruments and gear with ease. From guitars to sound systems, you'll find a wide range of equipment options to choose from.</p>
+
+            <p>Join us today and become a part of the Music Web App community. Whether you're a seasoned musician, an up-and-coming artist, or a venue owner, our platform offers a hub for all things music-related. Let the melodies flow and the connections grow!</p>
+            <!-- Formulario de inicio de sesión -->
+            <h3>Login</h3>
+
+            <div id="login-form-container" class="popup">
+                <form id="login-form">
+                    <h2>Iniciar sesión</h2>
+                    <input type="text" name="username" placeholder="Nombre de usuario">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <button type="submit">Iniciar sesión</button>
+                    <p>¿No tienes una cuenta? <a href="#" id="register-popup-link">Registrarse</a></p>
+                </form>
+            </div>
+            <div id="register-popup" class="popup">
+                <form id="register-form">
+                    <h2>Registrarse</h2>
+                    <input type="text" name="username" placeholder="Nombre de usuario">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <input type="email" name="email" placeholder="Correo electrónico">
+                    <button type="submit">Registrarse</button>
+                    <p>¿Ya tienes una cuenta? <a href="#" id="login-popup-link">Iniciar sesión</a></p>
+                </form>
+            </div>
+
+            <script src="script.js"></script>
+
+            <!-- Mensaje de error en caso de autenticación fallida -->
+            <div th:if="${errorMessage}" class="error-message">
+                <p th:text="${errorMessage}"></p>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Pop-up modal para el formulario de inicio de sesión -->
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Contenido del pop-up modal -->
+        </div>
+    </div>
+</div>
 </body>
 </html>

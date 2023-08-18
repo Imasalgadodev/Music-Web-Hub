@@ -20,4 +20,12 @@ public class BandService {
         Band band = bandRepository.findByName(name);
         return band != null;
     }
+
+    public boolean createBand(Band band) {
+        if (doesBandExist(band.getBandName())) {
+            bandRepository.save(band);
+            return true;
+        }
+        return false;
+    }
 }

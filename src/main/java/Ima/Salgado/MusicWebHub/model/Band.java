@@ -37,4 +37,7 @@ public class Band {
     private List<Musician> bandMembersList;
 
 
+    public String getBandName() {
+        return null;
+    }
 }
