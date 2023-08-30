@@ -3,6 +3,7 @@ package Ima.Salgado.MusicWebHub.controller;
 import Ima.Salgado.MusicWebHub.model.Musician;
 import Ima.Salgado.MusicWebHub.service.MusicianService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,6 +58,7 @@ public class MusicianController {
     }
 
     @GetMapping("/musicians")
+    @PreAuthorize("hasRole('Musician') or hasRole('admin')")
     public String listMusicians(Model model) {
 
         List<Musician> musicians = musicianService.getMusicians();
